@@ -13,7 +13,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function generateWithFallback(prompt) {
   // Use the model string directly
-  const modelName = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+  const modelName = process.env.GEMINI_MODEL || 'gemini-1.5-flash';
 
   try {
     console.log(`[Gemini] Attempting connection with: ${modelName}`);
