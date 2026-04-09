@@ -9,7 +9,7 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ["http://localhost:5173", "https://your-app-name.vercel.app"],
   credentials: true
 }));
 app.use(express.json());
@@ -23,7 +23,12 @@ app.use('/api/analytics', require('./routes/analytics'));
 // Health check
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
+
+// Remove the "if (process.env.NODE_ENV !== 'production')" check
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
-  console.log(`\n🚀 DataCrumbs Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
+
+module.exports = app;
