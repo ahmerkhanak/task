@@ -24,11 +24,11 @@ app.use('/api/analytics', require('./routes/analytics'));
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
 
-// Remove the "if (process.env.NODE_ENV !== 'production')" check
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
+}
 
 module.exports = app;
